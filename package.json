@@ -1,25 +1,15 @@
 {
-  "name": "expressapp",
-  "version": "1.0.0",
-  "dependencies": {
-    "bcryptjs": "^2.4.3",
-    "body-parser": "^1.20.0",
-    "config": "^3.3.7",
-    "cors": "^2.8.5",
-    "express": "^4.18.1",
-    "mongoose": "^6.3.4",
-    "validation": "^0.0.1"
+  "name": "tourfirm",
+  "scripts": {
+    "start:server": "npm run start --workspace=server",
+    "start:client": "npm run start --workspace=client",
+    "start": "concurrently \"npm run start:server\" \"npm run start:client\""
   },
   "devDependencies": {
-    "nodemon": "^2.0.16"
+    "concurrently": "^7.2.1"
   },
-  "main": "app.js",
-  "scripts": {
-    "start": "node app.js",
-    "app": "nodemone app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
-  "description": ""
+  "workspaces": [
+    "server",
+    "client"
+  ]
 }
