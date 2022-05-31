@@ -1,20 +1,27 @@
-const express = require('express');
-const connectDB = require('./config/db');
-var cors = require('cors');
+const express = require("express");
 
-const books = require('./routes/api/books');
+const cors = require("cors");
+
+const connectDB = require("./config/db");
+const createAdminUser = require("./config/admin");
+
+const auth = require("./routes/api/auth");
+const books = require("./routes/api/books");
 
 const app = express();
 
 connectDB();
+createAdminUser();
 
 app.use(cors({ origin: true, credentials: true }));
 
 app.use(express.json({ extended: false }));
 
-app.get('/', (req, res) => res.send('Hello world!'));
+app.get("/", (req, res) => res.send("Hello world!"));
 
-app.use('/api/books', books);
+app.use("/api/auth", auth);
+
+app.use("/api/books", books);
 
 const port = process.env.PORT || 8082;
 
