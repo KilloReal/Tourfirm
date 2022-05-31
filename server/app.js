@@ -6,7 +6,7 @@ const connectDB = require("./config/db");
 const createAdminUser = require("./config/admin");
 
 const auth = require("./routes/api/auth");
-const books = require("./routes/api/books");
+const tours = require("./routes/api/tours");
 
 const app = express();
 
@@ -21,7 +21,7 @@ app.get("/", (req, res) => res.send("Hello world!"));
 
 app.use("/api/auth", auth);
 
-app.use("/api/books", books);
+app.use("/api/tours", tours);
 
 const port = process.env.PORT || 8082;
 
