@@ -32,25 +32,25 @@
   }
 }
 
-.CreateBook {
+.CreateTour {
   background-color: #2c3e50;
   min-height: 100vh;
   color: white;
 }
 
-.ShowBookDetails {
+.ShowTourDetails {
   background-color: #2c3e50;
   min-height: 100vh;
   color: white;
 }
 
-.UpdateBookInfo {
+.UpdateTourInfo {
   background-color: #2c3e50;
   min-height: 100vh;
   color: white;
 }
 
-.ShowBookList {
+.ShowTourList {
   background-color: #2c3e50;
   height: 100%;
   width: 100%;
@@ -60,7 +60,7 @@
 }
 
 
-/* BookList Styles */
+/* TourList Styles */
 .list {
   display: grid;
   margin: 20px 0 50px 0;

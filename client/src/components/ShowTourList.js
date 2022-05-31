@@ -2,55 +2,55 @@ import React, { Component } from 'react';
 import '../App.css';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import BookCard from './BookCard';
+import TourCard from './TourCard';
 
-class ShowBookList extends Component {
+class ShowTourList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      books: []
+      tours: []
     };
   }
 
   componentDidMount() {
     axios
-      .get('http://localhost:8082/api/books')
+      .get('http://localhost:8082/api/tours')
       .then(res => {
         this.setState({
-          books: res.data
+          tours: res.data
         })
       })
       .catch(err =>{
-        console.log('Error from ShowBookList');
+        console.log('Error from ShowTourList');
       })
   };
 
 
   render() {
-    const books = this.state.books;
-    console.log("PrintBook: " + books);
-    let bookList;
+    const tours = this.state.tours;
+    console.log("PrintTour: " + tours);
+    let tourList;
 
-    if(!books) {
-      bookList = "there is no book record!";
+    if(!tours) {
+      tourList = "there is no tour record!";
     } else {
-      bookList = books.map((book, k) =>
-        <BookCard book={book} key={k} />
+      tourList = tours.map((tour, k) =>
+        <TourCard tour={tour} key={k} />
       );
     }
 
     return (
-      <div className="ShowBookList">
+      <div className="ShowTourList">
         <div className="container">
           <div className="row">
             <div className="col-md-12">
               <br />
-              <h2 className="display-4 text-center">Books List</h2>
+              <h2 className="display-4 text-center">Tours List</h2>
             </div>
 
             <div className="col-md-11">
-              <Link to="/create-book" className="btn btn-outline-warning float-right">
-                + Add New Book
+              <Link to="/create-tour" className="btn btn-outline-warning float-right">
+                + Add New Tour
               </Link>
               <br />
               <br />
@@ -60,7 +60,7 @@ class ShowBookList extends Component {
           </div>
 
           <div className="list">
-                {bookList}
+                {tourList}
           </div>
         </div>
       </div>
@@ -68,4 +68,4 @@ class ShowBookList extends Component {
   }
 }
 
-export default ShowBookList;
+export default ShowTourList;

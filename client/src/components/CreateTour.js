@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "../App.css";
 import axios from "axios";
 
-class CreateBook extends Component {
+class CreateTour extends Component {
   constructor() {
     super();
     this.state = {
@@ -15,7 +15,7 @@ class CreateBook extends Component {
       tourduration: "",
       departuredate: "",
       arrivaldate: "",
-      numberofperson: "",
+      numberofperson: ""
     };
   }
 
@@ -28,7 +28,6 @@ class CreateBook extends Component {
 
     const data = {
       title: this.state.title,
-      isbn: this.state.isbn,
       country: this.state.country,
       city: this.state.city,
       price: this.state.price,
@@ -36,15 +35,14 @@ class CreateBook extends Component {
       tourduration: this.state.tourduration,
       departuredate: this.state.departuredate,
       arrivaldate: this.state.arrivaldate,
-      numberofperson: this.state.numberofperson,
+      numberofperson: this.state.numberofperson
     };
 
     axios
-      .post("http://localhost:8082/api/books", data)
+      .post("http://localhost:8082/api/tours", data)
       .then((res) => {
         this.setState({
           title: "",
-          isbn: "",
           country: "",
           city: "",
           price: "",
@@ -63,18 +61,18 @@ class CreateBook extends Component {
 
   render() {
     return (
-      <div className="CreateBook">
+      <div className="CreateTour">
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
               <br />
               <Link to="/" className="btn btn-outline-warning float-left">
-                Show BooK List
+                Show Tour List
               </Link>
             </div>
             <div className="col-md-8 m-auto">
-              <h1 className="display-4 text-center">Add Book</h1>
-              <p className="lead text-center">Create new book</p>
+              <h1 className="display-4 text-center">Add Tour</h1>
+              <p className="lead text-center">Create new Tour</p>
 
               <form noValidate onSubmit={this.onSubmit}>
                 <div className="form-group">
@@ -88,17 +86,6 @@ class CreateBook extends Component {
                   />
                 </div>
                 <br />
-
-                <div className="form-group">
-                  <input
-                    type="text"
-                    placeholder="ISBN"
-                    name="isbn"
-                    className="form-control"
-                    value={this.state.isbn}
-                    onChange={this.onChange}
-                  />
-                </div>
 
                 <div className="form-group">
                   <input
@@ -200,4 +187,4 @@ class CreateBook extends Component {
   }
 }
 
-export default CreateBook;
+export default CreateTour;
