@@ -9,22 +9,35 @@ const BookSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  author: {
+  country: {
     type: String,
     required: true
   },
-  description: {
-    type: String
+  city: {
+    type: String,
+    required: true
   },
-  published_date: {
-    type: Date
+  price: {
+    type: String,
+    required: true
   },
-  publisher: {
-    type: String
+  hotel: {
+    type: String,
+    required: true
   },
-  updated_date: {
+  tourduration: {
+    type: String,
+    required: true
+  },
+  departuredate: {
+    type: Date, 
+  },
+  arrivaldate: {
     type: Date,
-    default: Date.now
+  },
+  numberofperson: {
+    type: String,
+    required: true
   }
 });
 
