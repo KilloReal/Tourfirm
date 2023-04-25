@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "../App.css";
 import axios from "axios";
+import Navbar from "./Navbar";
 
 class CreateTour extends Component {
   constructor() {
@@ -15,7 +16,7 @@ class CreateTour extends Component {
       tourduration: "",
       departuredate: "",
       arrivaldate: "",
-      numberofperson: ""
+      numberofperson: "",
     };
   }
 
@@ -35,7 +36,7 @@ class CreateTour extends Component {
       tourduration: this.state.tourduration,
       departuredate: this.state.departuredate,
       arrivaldate: this.state.arrivaldate,
-      numberofperson: this.state.numberofperson
+      numberofperson: this.state.numberofperson,
     };
 
     axios
@@ -61,128 +62,131 @@ class CreateTour extends Component {
 
   render() {
     return (
-      <div className="CreateTour">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-8 m-auto">
-              <br />
-              <Link to="/" className="btn btn-outline-warning float-left">
-                Show Tour List
-              </Link>
-            </div>
-            <div className="col-md-8 m-auto">
-              <h1 className="display-4 text-center">Add Tour</h1>
-              <p className="lead text-center">Create new Tour</p>
-
-              <form noValidate onSubmit={this.onSubmit}>
-                <div className="form-group">
-                  <input
-                    type="text"
-                    placeholder="Title of the Tour"
-                    name="title"
-                    className="form-control"
-                    value={this.state.title}
-                    onChange={this.onChange}
-                  />
-                </div>
+      <>
+        <Navbar />
+        <div className="CreateTour">
+          <div className="container">
+            <div className="row">
+              <div className="col-md-8 m-auto">
                 <br />
+                <Link to="/" className="btn btn-outline-warning float-left">
+                  Show Tour List
+                </Link>
+              </div>
+              <div className="col-md-8 m-auto">
+                <h1 className="display-4 text-center">Add Tour</h1>
+                <p className="lead text-center">Create new Tour</p>
 
-                <div className="form-group">
-                  <input
-                    type="text"
-                    placeholder="Country"
-                    name="country"
-                    className="form-control"
-                    value={this.state.country}
-                    onChange={this.onChange}
-                  />
-                </div>
+                <form noValidate onSubmit={this.onSubmit}>
+                  <div className="form-group">
+                    <input
+                      type="text"
+                      placeholder="Title of the Tour"
+                      name="title"
+                      className="form-control"
+                      value={this.state.title}
+                      onChange={this.onChange}
+                    />
+                  </div>
+                  <br />
 
-                <div className="form-group">
-                  <input
-                    type="text"
-                    placeholder="City"
-                    name="city"
-                    className="form-control"
-                    value={this.state.city}
-                    onChange={this.onChange}
-                  />
-                </div>
+                  <div className="form-group">
+                    <input
+                      type="text"
+                      placeholder="Country"
+                      name="country"
+                      className="form-control"
+                      value={this.state.country}
+                      onChange={this.onChange}
+                    />
+                  </div>
 
-                <div className="form-group">
-                  <input
-                    type="text"
-                    placeholder="Price"
-                    name="price"
-                    className="form-control"
-                    value={this.state.price}
-                    onChange={this.onChange}
-                  />
-                </div>
-                <div className="form-group">
-                  <input
-                    type="text"
-                    placeholder="Hotel"
-                    name="hotel"
-                    className="form-control"
-                    value={this.state.hotel}
-                    onChange={this.onChange}
-                  />
-                </div>
+                  <div className="form-group">
+                    <input
+                      type="text"
+                      placeholder="City"
+                      name="city"
+                      className="form-control"
+                      value={this.state.city}
+                      onChange={this.onChange}
+                    />
+                  </div>
 
-                <div className="form-group">
-                  <input
-                    type="text"
-                    placeholder="Tour duration"
-                    name="tourduration"
-                    className="form-control"
-                    value={this.state.tourduration}
-                    onChange={this.onChange}
-                  />
-                </div>
+                  <div className="form-group">
+                    <input
+                      type="text"
+                      placeholder="Price"
+                      name="price"
+                      className="form-control"
+                      value={this.state.price}
+                      onChange={this.onChange}
+                    />
+                  </div>
+                  <div className="form-group">
+                    <input
+                      type="text"
+                      placeholder="Hotel"
+                      name="hotel"
+                      className="form-control"
+                      value={this.state.hotel}
+                      onChange={this.onChange}
+                    />
+                  </div>
 
-                <div className="form-group">
-                  <input
-                    type="date"
-                    placeholder="Departure date"
-                    name="departuredate"
-                    className="form-control"
-                    value={this.state.departuredate}
-                    onChange={this.onChange}
-                  />
-                </div>
+                  <div className="form-group">
+                    <input
+                      type="text"
+                      placeholder="Tour duration"
+                      name="tourduration"
+                      className="form-control"
+                      value={this.state.tourduration}
+                      onChange={this.onChange}
+                    />
+                  </div>
 
-                <div className="form-group">
-                  <input
-                    type="date"
-                    placeholder="Arrival date"
-                    name="arrivaldate"
-                    className="form-control"
-                    value={this.state.arrivaldate}
-                    onChange={this.onChange}
-                  />
-                </div>
+                  <div className="form-group">
+                    <input
+                      type="date"
+                      placeholder="Departure date"
+                      name="departuredate"
+                      className="form-control"
+                      value={this.state.departuredate}
+                      onChange={this.onChange}
+                    />
+                  </div>
 
-                <div className="form-group">
-                  <input
-                    type="text"
-                    placeholder="Number of person"
-                    name="numberofperson"
-                    className="form-control"
-                    value={this.state.numberofperson}
-                    onChange={this.onChange}
-                  />
-                </div>
+                  <div className="form-group">
+                    <input
+                      type="date"
+                      placeholder="Arrival date"
+                      name="arrivaldate"
+                      className="form-control"
+                      value={this.state.arrivaldate}
+                      onChange={this.onChange}
+                    />
+                  </div>
 
-                <input
-                  type="submit"
-                  className="btn btn-outline-warning btn-block mt-4"
-                />
-              </form>
+                  <div className="form-group">
+                    <input
+                      type="text"
+                      placeholder="Number of person"
+                      name="numberofperson"
+                      className="form-control"
+                      value={this.state.numberofperson}
+                      onChange={this.onChange}
+                    />
+                  </div>
+
+                  <input
+                    type="submit"
+                    className="btn btn-outline-warning btn-block mt-4"
+                  />
+                </form>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </>
     );
   }
 }

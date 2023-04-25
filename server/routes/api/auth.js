@@ -15,7 +15,12 @@ router.post("/login", async (req, res) => {
     const isMatch = await user.comparePassword(req.body.password);
     console.log(isMatch);
     if (!isMatch) return res.status(401).json({ message: "Invalid password" });
-    else res.status(200).json({ message: "Authenticated" });
+    else {
+      let lUser = user;
+      lUser.password = "";
+      console.log(lUser);
+      res.status(200).json(lUser);
+    }
   } catch (err) {
     res.status(401).json({ message: "No such user" });
   }
@@ -31,8 +36,13 @@ router.post("/register", async (req, res) => {
     const user = new User({
       username: req.body.username,
       password: req.body.password,
+      admin: false,
     });
+    console.log(user);
     user.save();
+    let lUser = user;
+    lUser.password = "";
+    res.status(200).json(lUser);
   } catch (err) {
     res.status(409).json({ message: "User already exists" });
   }

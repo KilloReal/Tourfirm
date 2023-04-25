@@ -1,24 +1,50 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import '../App.css';
+import React from "react";
+import "../App.css";
+
+import axios from "axios";
+import { useRecoilValue } from "recoil";
+
+import { authAtom } from "../state";
 
 const TourCard = (props) => {
-    const  tour  = props.tour;
+  const auth = useRecoilValue(authAtom);
+  const tour = props.tour;
 
-    return(
-        <div className="card-container">
-            <img src="https://commapress.co.uk/books/the-book-of-cairo/cairo-provisional-v3/image%2Fspan3" alt="" />
-            <div className="desc">
-                <h2>
-                    <Link to={`/show-tour/${tour._id}`}>
-                        { tour.title }
-                    </Link>
-                </h2>
-                <h3>{tour.author}</h3>
-                <p>{tour.description}</p>
-            </div>
-        </div>
-    )
+  const bookTour = () => {
+    console.log("here");
+    console.log(auth._id);
+    console.log(tour._id);
+    axios.post(`http://localhost:8082/api/booking/${auth._id}`, {
+      tour_id: tour._id,
+    });
+  };
+
+  const img =
+    tour.city === "Sochi"
+      ? "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0a/42/da/24/img-20160208-124713-largejpg.jpg?w=1100&h=-1&s=1"
+      : tour.city === "Saratov"
+      ? "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0c/fa/f5/f2/caption.jpg?w=1200&h=-1&s=1"
+      : "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/10/90/c0/85/photo2jpg.jpg?w=1200&h=-1&s=1";
+
+  return (
+    <div className="card" style={{ width: "18rem" }}>
+      <img
+        src={img}
+        className="card-img-top"
+        style={{ height: "200px" }}
+        alt=""
+      />
+      <div className="card-body">
+        <h5 className="card-title">
+          {tour.title} {tour.author ? `by ${tour.author}` : ""}
+        </h5>
+        <p className="card-text">{tour.description}</p>
+        <button onClick={bookTour} className="btn btn-primary">
+          Book this tour
+        </button>
+      </div>
+    </div>
+  );
 };
 
 export default TourCard;
